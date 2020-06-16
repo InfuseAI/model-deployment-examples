@@ -1,0 +1,6 @@
+install.packages("keras")
+install.packages("reticulate")
+reticulate::install_miniconda()
+install.packages("tensorflow")
+library(tensorflow)
+install_tensorflow()
