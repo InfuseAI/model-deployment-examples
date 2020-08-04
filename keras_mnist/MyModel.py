@@ -18,3 +18,9 @@ class MyModel(object):
         data = np.expand_dims(data, axis=0)
         data = np.expand_dims(data, axis=-1)
         return self.model.predict(data)
+
+    def tags(self):
+        return {}
+
+    def metrics(self):
+        return []
