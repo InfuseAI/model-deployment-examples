@@ -7,3 +7,9 @@ class Model:
     def predict(self, X, feature_names=None, meta=None):
         output = self._model.predict(X)
         return output
+
+    def tags(self):
+        return {}
+
+    def metrics(self):
+        return []

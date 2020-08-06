@@ -9,3 +9,9 @@ class MNISTModel:
         probability = output[0]
         predicted_number = tf.math.argmax(probability)
         return {"predicted_number": predicted_number.numpy().tolist(), "probability": probability.tolist()}
+
+    def tags(self):
+        return {}
+
+    def metrics(self):
+        return []
