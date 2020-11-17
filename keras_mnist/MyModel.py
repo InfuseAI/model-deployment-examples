@@ -7,7 +7,6 @@ class MyModel(object):
     def __init__(self):
         print('calling init()...')
         self.model = load_model('keras-mnist.h5')
-        self.model._make_predict_function()
 
     def predict(self, request, names=None, meta=None):
         print('calling predict()...')
