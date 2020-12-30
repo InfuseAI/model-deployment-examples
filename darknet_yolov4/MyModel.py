@@ -33,7 +33,8 @@ class MyModel(object):
         height = darknet.network_height(network)
         darknet_image = darknet.make_image(width, height, 3)
 
-        image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image = 255 * np.array(image).astype('uint8')
+        image_rgb = cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
         image_resized = cv2.resize(image_rgb, (width, height),
                                 interpolation=cv2.INTER_LINEAR)
 
