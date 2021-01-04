@@ -34,7 +34,7 @@ RUN conda install --yes python=$PYTHON_VERSION conda=$CONDA_VERSION
 ## The above code is from https://github.com/SeldonIO/seldon-core/blob/master/wrappers/s2i/python/Dockerfile.gpu
 ################################################################################################################
 
-# Install Darkent
+# Install Darknet
 
 ## Install OpenCV
 RUN conda install  -c conda-forge opencv==3.4.9
@@ -52,7 +52,7 @@ RUN cd / && \
     sed -i 's/LIBSO=0/LIBSO=1/g' Makefile && \
     make
 
-# Wrap the seldom custom image with python wrapepr. Please seee
+# Wrap the seldom custom image with python wrapper. Please see
 # https://docs.seldon.io/projects/seldon-core/en/v1.1.0/python/python_wrapping_docker.html
 
 ## Install seldon.
