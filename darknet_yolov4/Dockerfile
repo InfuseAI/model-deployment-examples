@@ -31,7 +31,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}
 ARG PYTHON_VERSION=3.7
 RUN conda install --yes python=$PYTHON_VERSION conda=$CONDA_VERSION
 
-## The above code if from https://github.com/SeldonIO/seldon-core/blob/master/wrappers/s2i/python/Dockerfile.gpu
+## The above code is from https://github.com/SeldonIO/seldon-core/blob/master/wrappers/s2i/python/Dockerfile.gpu
 ################################################################################################################
 
 # Install Darkent
