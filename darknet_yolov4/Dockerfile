@@ -15,7 +15,6 @@ RUN apt-get update -y && apt-get install -qy --no-install-recommends \
 ENV PATH /opt/conda/bin:$PATH
 
 # Install Miniconda3
-ARG PYTHON_VERSION=3.7
 ARG CONDA_VERSION=4.7.12
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
@@ -29,30 +28,38 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}
     /opt/conda/bin/conda clean -afy
 
 # This is to install desired version of Python without updating conda version
-ARG PYTHON_VERSION
+ARG PYTHON_VERSION=3.7
 RUN conda install --yes python=$PYTHON_VERSION conda=$CONDA_VERSION
 
-# Install OpenCV
+## The above code if from https://github.com/SeldonIO/seldon-core/blob/master/wrappers/s2i/python/Dockerfile.gpu
+################################################################################################################
+
+# Install Darkent
+
+## Install OpenCV
 RUN conda install  -c conda-forge opencv==3.4.9
 RUN apt-get update -y && \
     apt-get install -qy --no-install-recommends libgl1-mesa-glx && \
     rm -rf /var/lib/apt/lists/*
 
-# Install darknet
+## Build the darknet. Please see
+## https://github.com/AlexeyAB/darknet#how-to-compile-on-linux-using-make
 RUN cd / && \
     git clone https://github.com/AlexeyAB/darknet.git && \
     cd darknet && \
-    git checkout 95339f2 && \
     sed -i 's/AVX=0/AVX=1/g' Makefile && \
     sed -i 's/OPENMP=0/OPENMP=1/g' Makefile && \
     sed -i 's/LIBSO=0/LIBSO=1/g' Makefile && \
     make
 
-# Install seldon
+# Wrap the seldom custom image with python wrapepr. Please seee
+# https://docs.seldon.io/projects/seldon-core/en/v1.1.0/python/python_wrapping_docker.html
+
+## Install seldon.
 RUN pip install seldon-core==1.4.0
 EXPOSE 5000
 
-# Install Application
+## Install Application
 COPY MyModel.py /darknet/
 WORKDIR /darknet
 
