@@ -2,11 +2,11 @@
 
 ## How to build the docker image
 
-s2i build . seldonio/seldon-core-s2i-python3:0.18 tensorflow2-mnist
+s2i build . seldonio/seldon-core-s2i-python3:1.5.0 tensorflow2-mnist
 
 ## How to run the docker image 
 
-docker run -p 5000:5000 --rm tensorflow2-mnist
+docker run -p 9000:9000 --rm tensorflow2-mnist
 
 ## How to submit a post request
 
