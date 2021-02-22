@@ -6,10 +6,16 @@ import numpy as np
 class MyModel(object):
     def __init__(self):
         print('calling init()...')
+        self.loaded = False
+
+    def load(self):
         self.model = load_model('keras-mnist.h5')
+        self.loaded = True
 
     def predict(self, request, names=None, meta=None):
         print('calling predict()...')
+        if not self.loaded:
+            self.load()
         imageStream = BytesIO(request)
         image = Image.open(imageStream).resize((28, 28)).convert('L')
 
