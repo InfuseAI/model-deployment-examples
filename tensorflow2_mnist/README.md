@@ -2,7 +2,7 @@
 
 ## How to build the docker image
 
-s2i build . seldonio/seldon-core-s2i-python3:1.5.0 tensorflow2-mnist
+docker build . -t tensorflow2-mnist
 
 ## How to run the docker image 
 

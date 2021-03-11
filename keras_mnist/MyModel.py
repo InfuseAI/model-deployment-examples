@@ -16,16 +16,11 @@ class MyModel(object):
         print('calling predict()...')
         if not self.loaded:
             self.load()
-        imageStream = BytesIO(request)
-        image = Image.open(imageStream).resize((28, 28)).convert('L')
-
-        data = np.asarray(image)
+        image = Image.open(BytesIO(request)).resize((28, 28))
+        image = np.array(image).astype(np.float32)
+        
+        data = np.copy(image)
+        data /= 255.0
         data = np.expand_dims(data, axis=0)
         data = np.expand_dims(data, axis=-1)
         return self.model.predict(data)
-
-    def tags(self):
-        return {}
-
-    def metrics(self):
-        return []

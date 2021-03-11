@@ -13,9 +13,3 @@ class Model:
             self.load()
         output = self._model.predict(X)
         return output
-
-    def tags(self):
-        return {}
-
-    def metrics(self):
-        return []
