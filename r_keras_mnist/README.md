@@ -3,7 +3,7 @@
 ## How to build the docker image
 
 ```
-s2i build . seldonio/seldon-core-s2i-r:0.1 model-r-keras-mnist
+docker build . -t model-r-keras-mnist
 ```
 
 ## How to run the docker image 
