@@ -68,12 +68,12 @@ class Model():
 
                 cv2.rectangle(img, pt1, pt2, draw_color, 1)
                 cv2.putText(img,
-                    f"Safety {sum(probs[:len(self.class_list_normal)])}",
+                    f"Safety [{round(sum(probs[:len(self.class_list_normal)]), 2)}]",
                     (pt1[0], pt1[1] - 5),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     0.5,
                     draw_color,
-                    1)
+                    2)
 
         if self.return_image:
             img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
