@@ -1,2 +1,2 @@
 seldon-core==1.6.0
-tensorflow==2.5.0
+tensorflow==2.5.1
