@@ -5,7 +5,7 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV MODEL_NAME ResnetModel
+ENV MODEL_NAME Model
 ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
 

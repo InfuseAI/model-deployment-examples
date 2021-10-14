@@ -3,7 +3,7 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 
-class MNISTModel:
+class Model:
     def __init__(self):
         self.loaded = False
 
